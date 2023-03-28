@@ -29,10 +29,10 @@ const Form = ({ className }: FormProps) => {
           className={`input${errors.name ? ' input--error' : ''}`}
         />
         <User className="input__icon" />
-        {errors.name && (
-          <span className="text-red-400">Podaj imię i nazwisko</span>
-        )}
       </div>
+      {errors.name && (
+        <span className="text-red-400">Podaj imię i nazwisko</span>
+      )}
 
       <div className="flex flex-col w-full relative">
         <input
@@ -41,8 +41,8 @@ const Form = ({ className }: FormProps) => {
           className={`input${errors.name ? ' input--error' : ''}`}
         />
         <Mail className="input__icon" />
-        {errors.email && <span className="text-red-400">Podaj email</span>}
       </div>
+      {errors.email && <span className="text-red-400">Podaj email</span>}
 
       <button
         type="submit"
