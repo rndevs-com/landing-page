@@ -1,6 +1,8 @@
 import Head from 'next/head'
 import { Inter } from '@next/font/google'
 import { ReactNode } from 'react'
+import Footer from './Footer'
+import Header from './Header'
 
 const inter = Inter({
   weight: ['300', '400', '800'],
@@ -25,7 +27,9 @@ React Native w krótkim czasie."
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header />
       <main className={`${inter.className} font-sans`}>{children}</main>
+      <Footer />
     </>
   )
 }

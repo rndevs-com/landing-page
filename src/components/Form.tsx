@@ -15,11 +15,9 @@ const Form = ({ className }: FormProps) => {
   const {
     register,
     handleSubmit,
-    watch,
     formState: { errors },
   } = useForm<Inputs>()
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
-  console.log(watch('name'))
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={className}>
       <div className="flex flex-col w-full relative">
