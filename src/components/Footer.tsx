@@ -2,7 +2,7 @@ import Link from 'next/link'
 
 const Footer = () => {
   return (
-    <footer className="container flex flex-row justify-between items-center mx-auto min-h-[120px]">
+    <footer className="container flex md:flex-row flex-col justify-between items-center mx-auto md:min-h-[120px] space-y-5 md:space-y-0 py-5 md:py-0">
       <div className="space-x-8">
         <Link href="/statute" className="link">
           Regulamin

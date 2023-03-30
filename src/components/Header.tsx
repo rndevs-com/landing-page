@@ -5,7 +5,7 @@ const Header = () => {
   const router = useRouter()
 
   return (
-    <header className="container flex flex-row justify-between items-center mx-auto min-h-[120px]">
+    <header className="container flex flex-row justify-between items-center mx-auto lg:min-h-[120px] py-5 lg:py-0">
       <h3 className="text-white">rndevs</h3>
       {router.route === '/benefits' ? null : (
         <Link

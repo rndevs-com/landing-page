@@ -14,6 +14,7 @@ body {
   );
   height: 100vh;
   @apply w-full;
+  @apply px-5;
 }
 
 a {
@@ -26,7 +27,9 @@ a {
 }
 
 .content {
-  height: calc(100vh - 240px);
+  @media (min-width: 768px) {
+    height: calc(100vh - 240px);
+  }
 }
 
 $input: input;

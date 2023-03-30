@@ -5,12 +5,12 @@ const LawPage = () => {
   const slug = (router.query.slug as string) || []
 
   return (
-    <div className="container mx-auto space-y-8 my-24">
+    <div className="container mx-auto space-y-8 md:my-24 my-5">
       <div className="max-w-screen-md text-white space-y-8 mx-auto">
-        <h3 className="text-white text-5xl font-bold">
+        <h3 className="text-white md:text-5xl text-3xl font-bold">
           {slug[0] === 'statute' ? 'Regulamin' : 'Polityka prywatności'}
         </h3>
-        <p className="text-white text-base font-light">
+        <p className="text-white md:text-base text-sm font-light">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ratione
           adipisci voluptates voluptatem, ipsam vero in a minima laborum
           perferendis minus non consequatur, fugiat laudantium. Laboriosam

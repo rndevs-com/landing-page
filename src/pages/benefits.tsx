@@ -1,54 +1,44 @@
 const Benefits = () => {
   return (
-    <div className="container mx-auto my-24">
+    <div className="container mx-auto md:my-24 my-5">
       <div className="max-w-screen-md text-white space-y-8 mx-auto">
-        <h3 className="text-white text-5xl font-bold">
-          Korzyści wynikające dla posiadaczy profilu na job boardzie dla React
-          Native Developerów
+        <h3 className="text-white md:text-5xl text-3xl font-bold">
+          Korzyści wynikające dla posiadaczy profilu na rndevs.com
         </h3>
-        <p className="">
-          Posiadanie profilu na job boardzie dla React Native Developerów to
-          bardzo korzystna opcja dla wszystkich programistów poszukujących
-          pracy. Dzięki temu, mają oni możliwość wyeksponowania swojego
-          doświadczenia oraz umiejętności, co zwiększa ich szanse na znalezienie
-          wymarzonej posady.
+        <p className="md:text-base text-sm">
+          Najważniejszą funkcją platformy jest łatwość i szybkość udostępnienia
+          swojego profilu. Poprzez jedno kliknięcie, można w łatwy sposób
+          udostępnić swój profil na platformie. Dzięki temu nie musisz poświęcać
+          czasu na wyszukiwanie i aplikowanie na konkretne oferty pracy,
+          ponieważ rekruterzy sami szukają kandydatów pasujących do ich potrzeb.
         </p>
-        <p>
-          Przede wszystkim, korzyścią wynikającą z posiadania profilu na job
-          boardzie jest możliwość zaprezentowania swojego portfolio. Programiści
-          React Native mogą umieścić na swoim profilu informacje o swoich
-          projektach, w których brali udział, a także ich linki, co znacznie
-          ułatwia proces rekrutacyjny. Właśnie portfolio jest jednym z
-          najważniejszych czynników decydujących o zatrudnieniu programisty.
+        <p className="md:text-base text-sm">
+          Kolejnym plusem jest to, że Twój profil jest widoczny dla szerokiego
+          grona rekruterów. Nie trzeba już tracić czasu na aplikowanie na oferty
+          pracy, które nie spełniają Twoich wymagań, ponieważ rekruterzy sami
+          znajdują odpowiednie profile i kontaktują się z kandydatami.
+          Dodatkowo, udostępnienie profilu na platformie zwiększa szanse na
+          znalezienie pracy, ponieważ rekruterzy mają dostęp do dużej bazy
+          potencjalnych kandydatów.
         </p>
-        <p>
-          Kolejną korzyścią jest łatwy dostęp do ofert pracy. Job boardy dla
-          programistów React Native często zawierają liczne oferty z całego
-          świata, co daje programistom dużo możliwości wyboru. Dzięki temu, mogą
-          oni znaleźć pracę, która odpowiada ich kwalifikacjom oraz
-          preferencjom, bez wychodzenia z domu.
+        <p className="md:text-base text-sm">
+          Dla obu stron, korzyścią jest również brak pośredników w procesie
+          rekrutacji. Platforma zapewnia bezpośredni kontakt między rekruterem a
+          kandydatem, co ułatwia proces rekrutacji i eliminuje opóźnienia
+          wynikające z pośrednictwa agencji rekrutacyjnych.
         </p>
-        <p>
-          Dodatkowo, posiadanie profilu na job boardzie to szansa na otrzymanie
-          ofert pracy bezpośrednio od rekruterów. Firmy rekrutujące często
-          przeglądają profile programistów na job boardach, w celu znalezienia
-          idealnego kandydata na stanowisko. Dlatego też, posiadanie
-          wypełnionego profilu i aktualizowanie go na bieżąco, może prowadzić do
-          otrzymania ofert pracy bezpośrednio od pracodawców.
+        <p className="md:text-base text-sm">
+          Nie bez znaczenia jest także to, że rndevs oferuje dodatkowe narzędzia
+          do zarządzania aplikacjami oraz harmonogramem rekrutacji. Dzięki temu,
+          proces rekrutacyjny staje się łatwiejszy i bardziej przejrzysty, a Ty
+          masz możliwość kontrolowania swojego statusu rekrutacji.
         </p>
-        <p>
-          Nie bez znaczenia jest także to, że job boardy często oferują
-          dodatkowe narzędzia do zarządzania aplikacjami oraz harmonogramem
-          rekrutacji. Dzięki temu, proces rekrutacyjny staje się łatwiejszy i
-          bardziej przejrzysty, a programiści mają możliwość kontrolowania
-          swojego statusu rekrutacji.
-        </p>
-        <p>
-          Podsumowując, posiadanie profilu na job boardzie to świetny sposób na
-          zwiększenie swoich szans na znalezienie wymarzonej pracy jako
-          programista React Native. Dzięki eksponowaniu swojego portfolio oraz
-          umiejętności, oraz łatwemu dostępowi do ofert pracy, programiści mogą
-          znaleźć pracę odpowiadającą ich kwalifikacjom i oczekiwaniom.
+        <p className="md:text-base text-sm">
+          Podsumowując, rndevs ułatwia i przyspiesza udostępnienia profilu,
+          widoczność dla szerokiej grupy rekruterów oraz oszczędność czasu i
+          zasobów. Jest to te rozwiązanie które ułatwia proces rekrutacji dla
+          obu stron i pozwala na znalezienie idealnego kandydata lub idealnej
+          pracy w krótszym czasie.
         </p>
       </div>
     </div>
