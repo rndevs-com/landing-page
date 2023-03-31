@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.0.0",
     "@next/font": "^13.2.4",
     "@types/node": "18.15.6",
     "@types/react": "18.0.28",
@@ -20,7 +21,8 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.8",
     "sass": "^1.60.0",
-    "typescript": "5.0.2"
+    "typescript": "5.0.2",
+    "yup": "^1.0.2"
   },
   "devDependencies": {
     "@svgr/webpack": "^7.0.0",
