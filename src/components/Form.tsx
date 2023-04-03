@@ -53,27 +53,38 @@ const Form = ({ className }: FormProps) => {
         <span className="text-red-400">{errors.email.message}</span>
       )}
 
-      <label className="lg:flex items-center">
+      <label className="relative text-xs lg:pl-7">
         <input
           type="checkbox"
-          className="relative mr-3 border-gray-600 border rounded appearance-none h-4 w-4 
+          className="lg:absolute mr-2 lg:mr-0 lg:left-0 lg:top-0.5 border-gray-600 border rounded appearance-none h-4 w-4 
           focus:ring-0 focus:ring-gray-700 checked:border-gray-700 checked:after:block c
           hecked:content-[''] checked:after:w-1/2 checked:after:h-1/2 checked:after:bg-gray-600 
           checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:-translate-x-1/2 
-          checked:after:-translate-y-1/2 checked:after:rounded-sm top-1 lg:top-0"
+          checked:after:-translate-y-1/2 checked:after:rounded-sm"
           {...register('privacyPolicy', { required: true })}
         />
-        <span className="text-gray-700 text-sm">
-          Wyrażam zgodę na przetwarzanie moich danych osobowych
+        <span className="text-gray-600">
+          Klikając przycisk „Dołącz do listy oczekujących” wyrażasz zgodę na
+          otrzymywanie na podany adres e-mail newsletter’a zawierającego
+          informacje o rndevs. Możesz zrezygnować z newsletter’a w każdym czasie
+          wysyłając wiadomość na adres:{' '}
+          <a
+            href="mailto:k.czech@rndevs.com"
+            className="text-blue-600 hover:underline"
+          >
+            k.czech@rndevs.com
+          </a>{' '}
+          lub klikając w link „rezygnuję" w wiadomości marketingowej.
         </span>
       </label>
       {errors.privacyPolicy && (
         <span className="text-red-400">{errors.privacyPolicy.message}</span>
       )}
-      <p className="mt-2 text-gray-700 text-sm">
-        Zapoznałem/am się z&nbsp;
+      <p className="mt-2 text-gray-600 text-xs">
+        Szczegółowe informacje o przetwarzaniu Twoich danych osobowych
+        znajdziesz w{' '}
         <Link href="/privacy-policy" className="text-blue-600 hover:underline">
-          Polityką prywatności
+          Polityce prywatności
         </Link>
       </p>
 
