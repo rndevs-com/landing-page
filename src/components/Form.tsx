@@ -3,6 +3,7 @@ import Mail from '@/assets/images/mail.svg'
 import Link from 'next/link'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
+import { sendinblueApiKey, sendinblueUrl } from '@/utils/env'
 
 type Inputs = {
   privacyPolicy: boolean
@@ -34,9 +35,43 @@ const Form = ({ className }: FormProps) => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm<Inputs>(formOptions)
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<Inputs> = async (data) => {
+    const body = {
+      email: `${data.email}`,
+      listIds: [2],
+    }
+
+    const options = {
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        'api-key': `${sendinblueApiKey}`,
+      },
+      body: JSON.stringify(body),
+    }
+
+    if (data && data.email) {
+      const result = await fetch(`${sendinblueUrl}/contacts`, options)
+        .then((response) => response.json())
+        .then((response) => {
+          if (response && response.code === 'duplicate_parameter') {
+            console.log('emailIsAvailable')
+          } else {
+            console.log('signInSuccessMsg')
+          }
+        })
+        .catch((err) => {
+          if (err) {
+            console.log(err.message)
+          }
+        })
+      reset(result)
+    }
+  }
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={className}>
