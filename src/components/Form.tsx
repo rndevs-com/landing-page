@@ -4,6 +4,9 @@ import Link from 'next/link'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { sendinblueApiKey, sendinblueUrl } from '@/utils/env'
+import { Toast } from 'flowbite-react'
+import { HiCheck } from 'react-icons/hi'
+import { useState } from 'react'
 
 type Inputs = {
   privacyPolicy: boolean
@@ -15,6 +18,7 @@ interface FormProps {
 }
 
 const Form = ({ className }: FormProps) => {
+  const [showToast, setShowToast] = useState(false)
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .required('Podaj email')
@@ -61,7 +65,7 @@ const Form = ({ className }: FormProps) => {
           if (response && response.code === 'duplicate_parameter') {
             console.log('emailIsAvailable')
           } else {
-            console.log('signInSuccessMsg')
+            setShowToast(true)
           }
         })
         .catch((err) => {
@@ -95,7 +99,7 @@ const Form = ({ className }: FormProps) => {
           focus:ring-0 focus:ring-gray-700 checked:border-gray-700 checked:after:block c
           hecked:content-[''] checked:after:w-1/2 checked:after:h-1/2 checked:after:bg-gray-600 
           checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:-translate-x-1/2 
-          checked:after:-translate-y-1/2 checked:after:rounded-sm"
+          checked:after:-translate-y-1/2 checked:after:rounded-sm "
           {...register('privacyPolicy', { required: true })}
         />
         <span className="text-gray-600">
@@ -122,6 +126,22 @@ const Form = ({ className }: FormProps) => {
           Polityce prywatności
         </Link>
       </p>
+
+      {showToast ? (
+        <Toast duration={300} className="!bg-gray-800 max-w-none">
+          <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-800 text-green-200">
+            <HiCheck className="h-5 w-5" />
+          </div>
+          <div className="ml-3 text-sm font-normal">
+            Gratulacje! W pierwszej kolejności otrzymasz informacje o planowanym
+            starcie platformy.
+          </div>
+          <Toast.Toggle
+            theme={{ base: '' }}
+            onClick={() => setShowToast(false)}
+          />
+        </Toast>
+      ) : null}
 
       <button
         type="submit"

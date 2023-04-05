@@ -4,6 +4,7 @@ const { fontFamily } = require('tailwindcss/defaultTheme')
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
+    './node_modules/flowbite-react/**/*.js',
     './src/pages/**/*.{ts,tsx}',
     './src/components/**/*.{ts,tsx}',
     './src/features/**/*.{ts,tsx}',
@@ -21,5 +22,5 @@ module.exports = {
       10: '10px',
     },
   },
-  plugins: [],
+  plugins: [require('flowbite/plugin')],
 }
