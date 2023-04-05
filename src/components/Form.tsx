@@ -5,7 +5,7 @@ import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
 import { sendinblueApiKey, sendinblueUrl } from '@/utils/env'
 import { Toast } from 'flowbite-react'
-import { HiCheck } from 'react-icons/hi'
+import { HiCheck, HiHeart } from 'react-icons/hi'
 import { useState } from 'react'
 
 type Inputs = {
@@ -19,6 +19,8 @@ interface FormProps {
 
 const Form = ({ className }: FormProps) => {
   const [showToast, setShowToast] = useState(false)
+  const [emailIsAvailable, setEmailIsAvailable] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .required('Podaj email')
@@ -62,15 +64,18 @@ const Form = ({ className }: FormProps) => {
       const result = await fetch(`${sendinblueUrl}/contacts`, options)
         .then((response) => response.json())
         .then((response) => {
+          setShowToast(true)
+          setErrorMessage('')
           if (response && response.code === 'duplicate_parameter') {
-            console.log('emailIsAvailable')
+            setEmailIsAvailable(true)
           } else {
-            setShowToast(true)
+            setEmailIsAvailable(false)
           }
         })
         .catch((err) => {
           if (err) {
-            console.log(err.message)
+            setShowToast(true)
+            setErrorMessage(err.message)
           }
         })
       reset(result)
@@ -95,11 +100,7 @@ const Form = ({ className }: FormProps) => {
       <label className="relative text-xs lg:pl-7">
         <input
           type="checkbox"
-          className="lg:absolute mr-2 lg:mr-0 lg:left-0 lg:top-0.5 border-gray-600 border rounded appearance-none h-4 w-4 
-          focus:ring-0 focus:ring-gray-700 checked:border-gray-700 checked:after:block c
-          hecked:content-[''] checked:after:w-1/2 checked:after:h-1/2 checked:after:bg-gray-600 
-          checked:after:absolute checked:after:left-1/2 checked:after:top-1/2 checked:after:-translate-x-1/2 
-          checked:after:-translate-y-1/2 checked:after:rounded-sm "
+          className="lg:absolute mr-2 lg:mr-0 lg:left-0 lg:top-0.5 rounded !bg-gray-700 border-transparent focus:outline-none focus:ring-0 focus:ring-offset-0"
           {...register('privacyPolicy', { required: true })}
         />
         <span className="text-gray-600">
@@ -128,13 +129,29 @@ const Form = ({ className }: FormProps) => {
       </p>
 
       {showToast ? (
-        <Toast duration={300} className="!bg-gray-800 max-w-none">
-          <div className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-green-800 text-green-200">
-            <HiCheck className="h-5 w-5" />
-          </div>
-          <div className="ml-3 text-sm font-normal">
-            Gratulacje! W pierwszej kolejności otrzymasz informacje o planowanym
-            starcie platformy.
+        <Toast
+          duration={300}
+          className="!bg-gray-800 !max-w-none justify-between"
+        >
+          <div className="flex flex-row items-center">
+            <div
+              className={`inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg ${
+                emailIsAvailable
+                  ? 'bg-red-800 text-red-200'
+                  : 'bg-green-800 text-green-200'
+              }`}
+            >
+              {emailIsAvailable ? (
+                <HiHeart className="h-5 w-5" />
+              ) : (
+                <HiCheck className="h-5 w-5" />
+              )}
+            </div>
+            <div className="ml-3 text-sm font-normal">
+              {emailIsAvailable
+                ? 'Dziękujemy! Już istniejesz u nas w bazie'
+                : 'Gratulacje! W pierwszej kolejności otrzymasz informacje o planowanym starcie platformy.'}
+            </div>
           </div>
           <Toast.Toggle
             theme={{ base: '' }}
