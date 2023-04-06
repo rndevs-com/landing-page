@@ -1,6 +1,7 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
 /** @type {import('next').NextConfig} */
-// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require('path')
+require('dotenv').config()
 const nextConfig = {
   webpack(config) {
     const fileLoaderRule = config.module.rules.find((rule) =>
@@ -23,6 +24,10 @@ const nextConfig = {
     fileLoaderRule.exclude = /\.svg$/i
 
     return config
+  },
+  env: {
+    SENDINBLUE_API_URL: process.env.NEXT_PUBLIC_SENDINBLUE_API_URL,
+    SENDINBLUE_API_KEY: process.env.NEXT_PUBLIC_SENDINBLUE_API_KEY,
   },
   reactStrictMode: true,
   sassOptions: {

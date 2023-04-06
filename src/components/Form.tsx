@@ -3,7 +3,6 @@ import Mail from '@/assets/images/mail.svg'
 import Link from 'next/link'
 import * as Yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { sendinblueApiKey, sendinblueUrl } from '@/utils/env'
 import { Toast } from 'flowbite-react'
 import { HiCheck, HiHeart } from 'react-icons/hi'
 import { useState } from 'react'
@@ -56,13 +55,16 @@ const Form = ({ className }: FormProps) => {
       headers: {
         Accept: 'application/json',
         'Content-Type': 'application/json',
-        'api-key': `${sendinblueApiKey}`,
+        'api-key': `${process.env.SENDINBLUE_API_KEY}`,
       },
       body: JSON.stringify(body),
     }
 
     if (data && data.email) {
-      const result = await fetch(`${sendinblueUrl}/contacts`, options)
+      const result = await fetch(
+        `${process.env.SENDINBLUE_API_URL}/contacts`,
+        options
+      )
         .then((response) => response.json())
         .then((response) => {
           setShowToast(true)
