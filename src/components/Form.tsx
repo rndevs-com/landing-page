@@ -20,6 +20,7 @@ interface FormProps {
 const Form = ({ className }: FormProps) => {
   const [showToast, setShowToast] = useState(false)
   const [emailIsAvailable, setEmailIsAvailable] = useState(false)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [errorMessage, setErrorMessage] = useState('')
   const validationSchema = Yup.object().shape({
     email: Yup.string()
@@ -47,7 +48,7 @@ const Form = ({ className }: FormProps) => {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const body = {
       email: `${data.email}`,
-      listIds: [2],
+      listIds: [4],
     }
 
     const options = {
@@ -78,7 +79,7 @@ const Form = ({ className }: FormProps) => {
             setErrorMessage(err.message)
           }
         })
-      reset(result)
+      reset(result as Inputs | undefined)
     }
   }
 
@@ -114,7 +115,7 @@ const Form = ({ className }: FormProps) => {
           >
             k.czech@rndevs.com
           </a>{' '}
-          lub klikając w link „rezygnuję" w wiadomości marketingowej.
+          {`lub klikając w link "rezygnuję" w wiadomości marketingowej.`}
         </span>
       </label>
       {errors.privacyPolicy && (
