@@ -47,7 +47,7 @@ const Form = ({ className }: FormProps) => {
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
     const body = {
       email: `${data.email}`,
-      listIds: [4],
+      listIds: [2],
     }
 
     const options = {
