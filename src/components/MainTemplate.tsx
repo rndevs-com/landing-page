@@ -22,7 +22,7 @@ const MainTemplate = ({ children }: MainTemplateProps) => {
         <meta
           name="description"
           content="Otrzymuj spersonalizowane oferty dopasowane do Twojego profilu, które spełnią Twoje oczekiwania, decyduj o podjęciu współpracy i znajdź idealną pracę w 
-React Native w krótkim czasie."
+React Native w krótkim czasie"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
