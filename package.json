@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "export": "next export",
     "start": "next start",
+    "serve": "serve out",
     "lint": "next lint"
   },
   "dependencies": {
@@ -25,6 +27,7 @@
     "react-hook-form": "^7.43.8",
     "react-icons": "^4.8.0",
     "sass": "^1.60.0",
+    "serve": "^14.2.0",
     "typescript": "5.0.2",
     "yup": "^1.0.2"
   },
