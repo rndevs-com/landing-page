@@ -15,5 +15,4 @@ jobs:
       - deploy:
           name: Deploying to dev
           command: |
-            echo "Deploying to dev"
-            ssh ubuntu@145.239.89.148 "cd /var/www/dev.landing.rndevs.com && git pull && yarn install && yarn build && yarn export"
+            scp -r ~/app/out/* ubuntu@145.239.89.148:/var/www/dev.landing.rndevs.com/
