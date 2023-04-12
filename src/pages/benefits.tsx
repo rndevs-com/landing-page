@@ -3,7 +3,7 @@ const Benefits = () => {
     <div className="container mx-auto md:my-24 my-5">
       <div className="max-w-screen-md text-white space-y-8 mx-auto">
         <h3 className="text-white md:text-5xl text-3xl font-bold">
-          Korzyści wynikające dla posiadaczy profilu na rndevs.com
+          Sprawdź co zyskujesz
         </h3>
         <p className="md:text-base text-sm">
           Najważniejszą funkcją platformy jest łatwość i szybkość udostępnienia
@@ -34,7 +34,7 @@ const Benefits = () => {
           masz możliwość kontrolowania swojego statusu rekrutacji.
         </p>
         <p className="md:text-base text-sm">
-          Podsumowując, rndevs ułatwia i przyspiesza udostępnienia profilu,
+          Podsumowując, rndevs ułatwia i przyspiesza proces rekrutacji,
           widoczność dla szerokiej grupy rekruterów oraz oszczędność czasu i
           zasobów. Jest to te rozwiązanie które ułatwia proces rekrutacji dla
           obu stron i pozwala na znalezienie idealnego kandydata lub idealnej

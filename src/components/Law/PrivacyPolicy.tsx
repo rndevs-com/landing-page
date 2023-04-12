@@ -10,7 +10,7 @@ const PrivacyPolicy = () => {
         internetowej{' '}
         <Link
           href="/"
-          className="text-blue-600 hover:underline"
+          className="text-[#61DAFB] hover:underline"
           target="_blank"
         >
           rndevs.com
@@ -28,7 +28,7 @@ const PrivacyPolicy = () => {
         adres{' '}
         <a
           href="mailto:k.czech@rndevs.com"
-          className="text-blue-600 hover:underline"
+          className="text-[#61DAFB] hover:underline"
         >
           k.czech@rndevs.com
         </a>
@@ -135,7 +135,7 @@ const PrivacyPolicy = () => {
         celach je przetwarzamy. Wystarczy, że wyślesz wiadomość na adres
         <a
           href="mailto:k.czech@rndevs.com"
-          className="text-blue-600 hover:underline pl-1"
+          className="text-[#61DAFB] hover:underline pl-1"
         >
           k.czech@rndevs.com
         </a>

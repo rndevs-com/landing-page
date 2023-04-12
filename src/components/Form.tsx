@@ -113,7 +113,7 @@ const Form = ({ className }: FormProps) => {
           wysyłając wiadomość na adres:{' '}
           <a
             href="mailto:k.czech@rndevs.com"
-            className="text-blue-600 hover:underline"
+            className="text-[#61DAFB] hover:underline"
           >
             k.czech@rndevs.com
           </a>{' '}
@@ -126,7 +126,7 @@ const Form = ({ className }: FormProps) => {
       <p className="mt-2 text-gray-600 text-xs">
         Szczegółowe informacje o przetwarzaniu Twoich danych osobowych
         znajdziesz w{' '}
-        <Link href="/privacy-policy" className="text-blue-600 hover:underline">
+        <Link href="/privacy-policy" className="text-[#61DAFB] hover:underline">
           Polityce prywatności
         </Link>
       </p>
@@ -165,7 +165,7 @@ const Form = ({ className }: FormProps) => {
 
       <button
         type="submit"
-        className="bg-gray-800 py-3 px-2 rounded-lg text-sm font-normal text-gray-600 hover:bg-gray-700 hover:text-white transition"
+        className="bg-gray-800 py-3 px-2 rounded-lg text-sm font-normal text-gray-600 hover:bg-gray-700 hover:text-white transition ease-in"
       >
         Dołącz do listy oczekujących
       </button>
