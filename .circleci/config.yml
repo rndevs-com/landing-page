@@ -25,13 +25,13 @@ jobs:
     steps:
       - run:
           name: Stop dev.landing.rndevs.com
-          command: pm2 stop dev.landing.rndevs.com
+          command: /usr/local/bin/pm2 stop dev.landing.rndevs.com
       - run:
           name: Delete all available instance
-          command: pm2 delete all
+          command: /usr/local/bin/pm2 delete all
       - run:
           name: Start dev.landing.rndevs.com
-          command: pm2 start npm --name "dev.landing.rndevs.com" -- start
+          command: /usr/local/bin/pm2 start npm --name "dev.landing.rndevs.com" -- start
 workflows:
   version: 2
   build_and_deploy:
