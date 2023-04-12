@@ -2,17 +2,53 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circleci/node:16.13-browsers
-    working_directory: ~/app
+      - image: circleci/node:14.17.6
     steps:
       - checkout
-      - run: yarn install
-      - run: yarn build
-      - run: yarn export
+      - restore_cache:
+          keys:
+            - yarn-v1-{{ checksum "yarn.lock" }}
+            - yarn-v1-
+      - run:
+          name: Install dependencies
+          command: yarn install --frozen-lockfile
+      - run:
+          name: Build
+          command: yarn build
+      - run:
+          name: Export
+          command: yarn export
+      - save_cache:
+          paths:
+            - ~/.cache/yarn
+          key: yarn-v1-{{ checksum "yarn.lock" }}
+  deploy:
+    docker:
+      - image: bitnami/ssh:latest
+    steps:
+      - attach_workspace:
+          at: ~/workspace
       - add_ssh_keys:
           fingerprints:
             - '43:d7:0c:d4:72:e9:b2:a8:c7:fb:0f:c1:f7:a7:c5:f6'
-      - deploy:
-          name: Deploying to dev
+      - run:
+          name: Copy files to server
           command: |
-            scp -r ~/app/out/* ubuntu@145.239.89.148:/var/www/dev.landing.rndevs.com/
+            ssh root@145.239.89.148 "rm -rf /var/www/html/*"
+            scp -r -o "StrictHostKeyChecking no" ~/workspace/out/* root@145.239.89.148:/var/www/html/
+workflows:
+  version: 2
+  build_and_deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              only:
+                - develop
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only:
+                - develop
