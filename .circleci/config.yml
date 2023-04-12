@@ -15,27 +15,23 @@ jobs:
       - run:
           name: Build
           command: yarn build
-      - run:
-          name: Export
-          command: yarn export
       - save_cache:
           paths:
             - ~/.cache/yarn
           key: yarn-v1-{{ checksum "yarn.lock" }}
   deploy:
     docker:
-      - image: ubuntu:latest
+      - image: circleci/node:latest
     steps:
-      - attach_workspace:
-          at: ~/workspace
-      - add_ssh_keys:
-          fingerprints:
-            - '43:d7:0c:d4:72:e9:b2:a8:c7:fb:0f:c1:f7:a7:c5:f6'
       - run:
-          name: Copy files to server
-          command: |
-            ssh ubuntu@145.239.89.148 "rm -rf /var/www/html/*"
-            scp -r -o "StrictHostKeyChecking no" ~/workspace/out/* ubuntu@145.239.89.148:/var/www/html/
+          name: Stop dev.landing.rndevs.com
+          command: pm2 stop dev.landing.rndevs.com
+      - run:
+          name: Delete all available instance
+          command: pm2 delete all
+      - run:
+          name: Start dev.landing.rndevs.com
+          command: pm2 start npm --name "dev.landing.rndevs.com" -- start
 workflows:
   version: 2
   build_and_deploy:
