@@ -24,7 +24,7 @@ jobs:
           key: yarn-v1-{{ checksum "yarn.lock" }}
   deploy:
     docker:
-      - image: bitnami/ssh:latest
+      - image: ubuntu:latest
     steps:
       - attach_workspace:
           at: ~/workspace
@@ -34,8 +34,8 @@ jobs:
       - run:
           name: Copy files to server
           command: |
-            ssh root@145.239.89.148 "rm -rf /var/www/html/*"
-            scp -r -o "StrictHostKeyChecking no" ~/workspace/out/* root@145.239.89.148:/var/www/html/
+            ssh ubuntu@145.239.89.148 "rm -rf /var/www/html/*"
+            scp -r -o "StrictHostKeyChecking no" ~/workspace/out/* ubuntu@145.239.89.148:/var/www/html/
 workflows:
   version: 2
   build_and_deploy:
