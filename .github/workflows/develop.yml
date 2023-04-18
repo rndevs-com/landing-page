@@ -38,6 +38,3 @@ jobs:
           SOURCE: out/
           TARGET: /var/www/dev.landing.rndevs.com/
           ARGS: "-rltgoDzvOu --delete"
-      
-      - name: Serve application
-        run: yarn serve
