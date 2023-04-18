@@ -37,4 +37,4 @@ jobs:
           REMOTE_PORT: 22
           SOURCE: out/
           TARGET: /var/www/dev.landing.rndevs.com/
-          ARGS: "-rltgoDzvO --delete"
+          ARGS: "-rltgoDzvOu --delete"
