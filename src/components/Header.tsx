@@ -15,7 +15,7 @@ const Header = () => {
           href="/benefits"
           className="py-3 px-6 max-[400px]:mt-6 max-[400px]:w-full text-center rounded-lg text-sm font-normal bg-gray-50 text-gray-800 hover:bg-[#61DAFB] hover:text-gray-700 transition ease-in"
         >
-          Sprawdź korzyści
+          Sprawdź
         </Link>
       )}
     </header>
