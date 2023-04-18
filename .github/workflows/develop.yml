@@ -7,31 +7,33 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y nodejs
-          sudo apt-get install -y npm
-          sudo npm install -g yarn
-          yarn install
-
-      - name: Build and export Next.js application
-        run: |
-          yarn build
-          yarn export
-
-      - name: Deploy to VPS
-        uses: easingthemes/ssh-deploy@v2.2.8
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-avz --delete-after --exclude='.env*' --exclude='.next'"
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          server: ubuntu@145.239.89.148
-          remote_path: /var/www/dev.landing.rndevs.com/
-          local_path: ./out
-          ignore_errors: true
+          node-version: '16.x'
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Build application
+        run: yarn build
+
+      - name: Export application
+        run: yarn export
+
+      - name: Deploy to server
+        uses: easingthemes/ssh-deploy@v2.1.5
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          remote-user: ubuntu
+          remote-host: 145.239.89.148
+          remote-port: 22
+          local-folder: out/
+          remote-folder: /var/www/dev.landing.rndevs.com/
+          args: "-rltgoDzvO --delete"
