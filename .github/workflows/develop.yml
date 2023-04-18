@@ -30,10 +30,10 @@ jobs:
       - name: Deploy to server
         uses: easingthemes/ssh-deploy@v2.1.5
         with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-          remote-user: ubuntu
-          remote-host: 145.239.89.148
-          remote-port: 22
-          local-folder: out/
-          remote-folder: /var/www/dev.landing.rndevs.com/
-          args: "-rltgoDzvO --delete"
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          REMOTE_USER: ubuntu
+          REMOTE_HOST: 145.239.89.148
+          REMOTE_PORT: 22
+          SOURCE: out/
+          TARGET: /var/www/dev.landing.rndevs.com/
+          ARGS: "-rltgoDzvO --delete"
