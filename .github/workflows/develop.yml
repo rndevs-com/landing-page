@@ -31,10 +31,9 @@ jobs:
         uses: easingthemes/ssh-deploy@v2.1.5
         with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          SSH_PUBLIC_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
           REMOTE_USER: ubuntu
           REMOTE_HOST: 145.239.89.148
           REMOTE_PORT: 22
           SOURCE: out/
-          TARGET: /var/www/dev.landing.rndevs.com/
+          TARGET: /var/www/dev.landing.rndevs.com/html/
           ARGS: "-rltgoDzvOu --delete"
